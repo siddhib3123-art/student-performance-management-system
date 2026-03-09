@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Performance Dashboard</h2>
+
+<!-- Summary Cards Row 1 -->
+<div class="row text-center">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow rounded border-top border-blue hover-card">
+            <h5>Total Students</h5>
+            <p class="fs-3">{{ total_students }}</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow rounded border-top border-green p-3 hover-card">
+            <h5>Passed Students</h5>
+            <p class="fs-3">{{ pass_count }}</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow rounded border-top border-orange p-3 hover-card">
+            <h5>Failed Students</h5>
+            <p class="fs-3">{{ fail_count }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Advanced Cards Row 2 -->
+<div class="row text-center mt-4">
+    <div class="col-md-6 mb-3">
+        <div class="card shadow rounded border-top border-red p-3 hover-card">
+            <h5>Topper</h5>
+            {% if topper %}
+                <p class="fs-4">{{ topper.name }} - {{ topper.percentage }}%</p>
+            {% else %}
+                <p class="fs-4">No students yet</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card shadow rounded border-top border-green p-3 hover-card">
+            <h5>Class Average</h5>
+            <p class="fs-3">{{ avg_percentage }}%</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Students{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Student List</h2>
+    <!-- Search Form -->
+    <form method="GET" class="d-flex">
+        <input type="text" name="q" class="form-control me-2" placeholder="Search by Roll or Name" value="{{ request.GET.q }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<table class="table table-striped table-hover text-center">
+    <thead>
+        <tr>
+            <th>Roll</th>
+            <th>Name</th>
+            <th>English</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Social Science</th>
+            <th>Marathi</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.roll }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.english }}</td>
+            <td>{{ student.maths }}</td>
+            <td>{{ student.science }}</td>
+            <td>{{ student.socialscience }}</td>
+            <td>{{ student.marathi }}</td>
+            <td>{{ student.total }}</td>
+            <td>{{ student.percentage }}</td>
+            <td>{{ student.grade }}</td>
+            <td>
+                <a href="{% url 'update_student' student.roll %}" class="btn btn-warning btn-sm">Update</a>
+                <a href="{% url 'delete_student' student.roll %}" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="11">No students found</td>
+        </tr>
+    </tbody>
+</table>
+        {% endfor %}
+{% endblock %}

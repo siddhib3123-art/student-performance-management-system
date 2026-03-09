@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Update Student{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow rounded p-4" style="width: 400px;">
+        <h3 class="text-center mb-4">Update Student</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="roll" class="form-label">Roll No</label>
+                <input type="text" name="roll" id="roll" class="form-control" value="{{ student.roll }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ student.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="english" class="form-label">English</label>
+                <input type="number" name="english" id="english" class="form-control" value="{{ student.english }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="maths" class="form-label">Maths</label>
+                <input type="number" name="maths" id="maths" class="form-control" value="{{ student.maths }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="science" class="form-label">Science</label>
+                <input type="number" name="science" id="science" class="form-control" value="{{ student.science }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="socialscience" class="form-label">Social Science</label>
+                <input type="number" name="socialscience" id="socialscience" class="form-control" value="{{ student.socialscience }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="marathi" class="form-label">Marathi</label>
+                <input type="number" name="marathi" id="marathi" class="form-control" value="{{ student.marathi }}" required>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Update Student</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
